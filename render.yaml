@@ -1,0 +1,22 @@
+# render.yaml - Deploy Discord Messenger Extended
+services:
+  - type: web
+    name: discord-messenger-extended
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: BOT_TOKEN
+        fromDatabase: false
+        value: "" # Put your server-side bot token here (for AI /chat feature)
+      - key: OPENAI_API_KEY
+        fromDatabase: false
+        value: "" # Put your OpenAI API key here
+      - key: PORT
+        fromDatabase: false
+        value: "10000"
+    autoDeploy: true
+    pullRequestPreviewsEnabled: false
+    branch: main
